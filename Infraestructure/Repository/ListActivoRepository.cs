@@ -15,14 +15,14 @@ namespace Infraestructure.Repository
         {
             return data.Where(x => x.Id == id).FirstOrDefault();
 
-            //foreach(Activo activo in data)
+            //foreach (Activo activo in data)
             //{
             //    if (activo.Id == id)
             //    {
             //        return activo;
-                   
+
             //    }
-               
+
             //}
             //return null;
         }
