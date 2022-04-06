@@ -12,5 +12,6 @@ namespace Domain.Entities
         public Activo activo { get; set; }
         public Empleado empleado { get; set; }
         public DateTime Fecha { get; set; }
+        public byte Estado { get; set; }
     }
 }
