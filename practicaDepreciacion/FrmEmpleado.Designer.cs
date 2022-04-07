@@ -42,7 +42,6 @@ namespace practicaDepreciacion
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.dgvEmpleado = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleado)).BeginInit();
             this.SuspendLayout();
             // 
@@ -155,21 +154,11 @@ namespace practicaDepreciacion
             this.dgvEmpleado.Size = new System.Drawing.Size(531, 179);
             this.dgvEmpleado.TabIndex = 31;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(351, 275);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 32;
-            this.label2.Text = "label2";
-            // 
             // FrmEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(813, 297);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvEmpleado);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnEliminar);
@@ -206,6 +195,5 @@ namespace practicaDepreciacion
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.DataGridView dgvEmpleado;
-        private System.Windows.Forms.Label label2;
     }
 }
