@@ -121,7 +121,8 @@ namespace practicaDepreciacion
 
         private void Btnsalir_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult r = MessageBox.Show("¿Estas Seguro ?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if(r==DialogResult.Yes) this.Close();
         }
 
         private void Btnupdate_Click(object sender, EventArgs e)

@@ -16,5 +16,10 @@ namespace practicaDepreciacion
         {
             InitializeComponent();
         }
+
+        private void FrmEmpleado_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

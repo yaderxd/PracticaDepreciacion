@@ -13,6 +13,7 @@ namespace Infraestructure.Repository
 {
     public class RAFContext
     {
+        private string temporalActivo = "temporalActivo";
         private string fileName;
         private int size;
         private const string directoryName = "DATA";
@@ -32,6 +33,10 @@ namespace Infraestructure.Repository
         public Stream DataStream
         {
             get => File.Open($"{fileName}.dat", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+        }
+        public Stream TemporalHeader
+        {
+            get => File.Open($"{temporalActivo}.tp", FileMode.OpenOrCreate, FileAccess.ReadWrite);
         }
 
         public void Create<T>(T t)
@@ -286,14 +291,40 @@ namespace Infraestructure.Repository
         }
 
         //TODO Add Update and Delete method
-        public void Delete(int id)
+        public void Delete<T>(int id, List<int> listaIds)
         {
-            
-            long pos = 8 + (id - 1) * 4;
-            using (BinaryWriter bwHeader = new BinaryWriter(HeaderStream))
+            try
             {
-                bwHeader.BaseStream.Seek(pos, SeekOrigin.Begin);
-                bwHeader.Write(0);
+                int n = 0, k = 0;
+                using (BinaryReader brHeader = new BinaryReader(HeaderStream))
+                {
+                    brHeader.BaseStream.Seek(0, SeekOrigin.Begin);
+                    n = brHeader.ReadInt32();
+                    k = brHeader.ReadInt32();
+
+                    int index = listaIds.BinarySearch(id);
+
+                    using (BinaryWriter bwTemporal = new BinaryWriter(TemporalHeader))
+                    {
+                        bwTemporal.BaseStream.Seek(0, SeekOrigin.Begin);
+                        bwTemporal.Write(--n);
+                        bwTemporal.Write(k);
+
+                        for (int i = 0; i < listaIds.Count; i++)
+                        {
+                            if (listaIds[i] != id)
+                            {
+                                bwTemporal.Write(listaIds[i]);
+                            }
+                        }
+                    }
+                }
+                File.Delete($"{fileName}.hd");
+                File.Copy($"{temporalActivo}.tp", $"{fileName}.hd");
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
 

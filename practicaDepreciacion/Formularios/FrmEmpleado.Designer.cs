@@ -214,6 +214,7 @@ namespace practicaDepreciacion
             this.Controls.Add(this.lblcodigo);
             this.Name = "FrmEmpleado";
             this.Text = "Registro Empleado";
+            this.Load += new System.EventHandler(this.FrmEmpleado_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleado)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

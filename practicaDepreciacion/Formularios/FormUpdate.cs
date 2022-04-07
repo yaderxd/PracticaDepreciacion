@@ -46,7 +46,9 @@ namespace practicaDepreciacion
 
         private void Btncancel_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult r = MessageBox.Show("¿Estas Seguro ?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (r == DialogResult.Yes)
+                Application.Exit();
         }
     }
 }
